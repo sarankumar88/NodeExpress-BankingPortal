@@ -3,7 +3,7 @@ const path = require('path');
 
 const express = require('express');
 const accountRoutes = require('./routes/accounts');
-const servicesRouters = require('./routes/services');
+const servicesRoutes = require('./routes/services');
 
 
 const app = express();
@@ -14,12 +14,13 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.urlencoded({extended:true}))
-app.use('/account',accountRoutes);
-app.use('/services', servicesRouters);
 
 app.get("/" , (req,res) => {
     res.render('index' , {title: "Account Summary", accounts: accounts});
 });
+
+app.use('/account',accountRoutes);
+app.use('/services', servicesRoutes);
 
 app.get('/profile' , (req,res) => {
     res.render('profile' , {user: users[0]})

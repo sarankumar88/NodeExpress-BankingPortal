@@ -14,4 +14,4 @@ router.get('/credit', (req,res) => {
     res.render('account', {account: accounts.credit})
 });
 
-module.exports = {router}
+module.exports = router
